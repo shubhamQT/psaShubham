@@ -1,0 +1,82 @@
+{
+  "id": "search-project-view-all-results",
+  "testPlanId": "330ac1cb-5474-4fea-a1f2-80787fed1402",
+  "requirementId": "5f0655f8-28d3-4dbc-a87b-5c0336114156",
+  "suiteName": "Start Planned Project Task - Functional Happy Paths",
+  "case": {
+    "id": "search-project-view-all-results",
+    "title": "Open project from full Search Results page and verify Project Tasks link",
+    "priority": "P1",
+    "platforms": [
+      "chrome"
+    ],
+    "preconditions": [
+      "Project '360 HEALTH AND COMMU - Q-383470 - Ready Fixed Fee Implementation' exists."
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "action": "openUrl",
+        "targetDescription": "Open Salesforce PSA Home page",
+        "value": "https://ukgsf--stest.sandbox.lightning.force.com/lightning/page/home"
+      },
+      {
+        "id": "s2",
+        "action": "waitForVisible",
+        "targetDescription": "Global search input is visible",
+        "locatorHint": "global header search input [placeholder='Search...'] or role=combobox",
+        "value": "10000"
+      },
+      {
+        "id": "s3",
+        "action": "fill",
+        "targetDescription": "Enter project name in Global search",
+        "locatorHint": "global header search input [placeholder='Search...'] or role=combobox",
+        "value": "360 HEALTH AND COMMU - Q-383470 - Ready Fixed Fee Implementation"
+      },
+      {
+        "id": "s4",
+        "action": "waitForVisible",
+        "targetDescription": "Typeahead results list appears",
+        "locatorHint": "search typeahead results listbox",
+        "value": "5000"
+      },
+      {
+        "id": "s5",
+        "action": "tap",
+        "targetDescription": "Click 'View All Results' from typeahead",
+        "locatorHint": "typeahead footer link/button 'View All Results'"
+      },
+      {
+        "id": "s6",
+        "action": "waitForVisible",
+        "targetDescription": "Global Search Results page is visible",
+        "locatorHint": "Search Results heading",
+        "value": "10000"
+      },
+      {
+        "id": "s7",
+        "action": "tap",
+        "targetDescription": "Open the matching project from Search Results",
+        "locatorHint": "result link text '360 HEALTH AND COMMU - Q-383470 - Ready Fixed Fee Implementation'"
+      },
+      {
+        "id": "s8",
+        "action": "waitForVisible",
+        "targetDescription": "Project Detail page header is visible",
+        "locatorHint": "record page header title",
+        "value": "10000"
+      },
+      {
+        "id": "s9",
+        "action": "assertVisible",
+        "targetDescription": "Verify 'Project Tasks' related link is present",
+        "locatorHint": "Related tab -> 'Project Tasks' related list link"
+      }
+    ],
+    "tags": [
+      "@functional",
+      "@regression"
+    ]
+  }
+}

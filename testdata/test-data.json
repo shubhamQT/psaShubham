@@ -1,1 +1,14 @@
-{}
+{
+  "startAPlannedProjectTaskFromProjectSearchTypeaheadAndVerifyStatusUpdatesToStarted": {
+    "enterProjectNameInGlobalSearch": "360 HEALTH AND COMMU - Q-383470 - Ready Fixed Fee Implementation"
+  },
+  "globalSearchIsCaseInsensitiveForProjectNameViaTypeahead": {
+    "enterProjectNameInLowerCase": "360 health and commu - q-383470 - ready fixed fee implementation"
+  },
+  "openProjectFromFullSearchResultsPageAndVerifyProjectTasksLink": {
+    "enterProjectNameInGlobalSearch": "360 HEALTH AND COMMU - Q-383470 - Ready Fixed Fee Implementation"
+  },
+  "startOneTaskWhenMultiplePlannedTasksExistAndVerifyOthersRemainPlanned": {
+    "enterProjectNameInGlobalSearch": "360 HEALTH AND COMMU - Q-383470 - Ready Fixed Fee Implementation"
+  }
+}
