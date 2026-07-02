@@ -1,28 +1,33 @@
 import { test as base, expect } from "@playwright/test";
-import { CommonPage } from "../pageobjects/CommonPage";
-import { ProjectDetailPage } from "../pageobjects/ProjectDetailPage";
-import { ProjectTaskDetailPage } from "../pageobjects/ProjectTaskDetailPage";
-import { ProjectTasksRelatedListPage } from "../pageobjects/ProjectTasksRelatedListPage";
+import { HomePage } from "../pageobjects/HomePage";
+import { PseProjCPage } from "../pageobjects/PseProjCPage";
+import { PseProjCrelatedPage } from "../pageobjects/PseProjCrelatedPage";
+import { PseProjectTaskCPage } from "../pageobjects/PseProjectTaskCPage";
+import { SearchResultPage } from "../pageobjects/SearchResultPage";
 
 type AppFixtures = {
-  commonPage: CommonPage;
-  projectDetailPage: ProjectDetailPage;
-  projectTaskDetailPage: ProjectTaskDetailPage;
-  projectTasksRelatedListPage: ProjectTasksRelatedListPage;
+  homePage: HomePage;
+  pseProjCPage: PseProjCPage;
+  pseProjCrelatedPage: PseProjCrelatedPage;
+  pseProjectTaskCPage: PseProjectTaskCPage;
+  searchResultPage: SearchResultPage;
 };
 
 export const test = base.extend<AppFixtures>({
-  commonPage: async ({ page }, use) => {
-    await use(new CommonPage(page));
+  homePage: async ({ page }, use) => {
+    await use(new HomePage(page));
   },
-  projectDetailPage: async ({ page }, use) => {
-    await use(new ProjectDetailPage(page));
+  pseProjCPage: async ({ page }, use) => {
+    await use(new PseProjCPage(page));
   },
-  projectTaskDetailPage: async ({ page }, use) => {
-    await use(new ProjectTaskDetailPage(page));
+  pseProjCrelatedPage: async ({ page }, use) => {
+    await use(new PseProjCrelatedPage(page));
   },
-  projectTasksRelatedListPage: async ({ page }, use) => {
-    await use(new ProjectTasksRelatedListPage(page));
+  pseProjectTaskCPage: async ({ page }, use) => {
+    await use(new PseProjectTaskCPage(page));
+  },
+  searchResultPage: async ({ page }, use) => {
+    await use(new SearchResultPage(page));
   },
 });
 
