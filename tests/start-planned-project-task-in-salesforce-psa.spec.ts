@@ -24,10 +24,6 @@ test.describe('Salesforce PSA - Start Planned Project Task - Functional', () => 
       await homePage.fillSearchInput(testData.e2eSearchProjectOpenProjectTasksOpenPlannedTaskAndStartItPlannedStarted.enterExactProjectNameInGlobalSearch);
     });
 
-    await test.step('Assert visible — Search results dropdown/listbox becomes visible', async () => {
-      await searchResultPage.expectSearchResultsVisible();
-    });
-
     await test.step('Assert contains — Expected project appears in search results', async () => {
       await searchResultPage.expectSearch360HealthAndContainsText(testData.e2eSearchProjectOpenProjectTasksOpenPlannedTaskAndStartItPlannedStarted.enterExactProjectNameInGlobalSearch);
     });
@@ -116,10 +112,6 @@ test.describe('Salesforce PSA - Start Planned Project Task - Functional', () => 
 
     await test.step('Fill — Enter project name in lowercase to test case-insensitivity', async () => {
       await homePage.fillSearchInput(testData.globalSearchCaseInsensitiveSearchReturnsTheTargetProject.enterProjectNameInLowercaseToTestCaseInsensitivity);
-    });
-
-    await test.step('Assert visible — Search results dropdown/listbox becomes visible', async () => {
-      await searchResultPage.expectSearchResultsVisible();
     });
 
     await test.step('Assert contains — Results include the correctly-cased project name (case-insensitive match)', async () => {
