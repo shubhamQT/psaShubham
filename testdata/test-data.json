@@ -1,1 +1,8 @@
-{}
+{
+  "e2eSearchProjectOpenProjectTasksOpenPlannedTaskAndStartItPlannedStarted": {
+    "enterExactProjectNameInGlobalSearch": "360 HEALTH AND COMMU - Q-383470 - Ready Fixed Fee Implementation"
+  },
+  "globalSearchCaseInsensitiveSearchReturnsTheTargetProject": {
+    "enterProjectNameInLowercaseToTestCaseInsensitivity": "360 health and commu - q-383470 - ready fixed fee implementation"
+  }
+}

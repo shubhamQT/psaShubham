@@ -1,0 +1,225 @@
+{
+  "id": "c8d90305-7270-4337-a7f2-ae498fe6e518",
+  "requirementId": "273818f7-95f1-42a3-8a51-065127bfa87a",
+  "model": "gpt-5",
+  "createdAt": "2026-07-02T06:27:10.726Z",
+  "plan": {
+    "version": 1,
+    "suiteName": "Salesforce PSA - Start Planned Project Task - Functional",
+    "cases": [
+      {
+        "id": "e2e-start-planned-project-task",
+        "title": "E2E: Search project, open Project Tasks, open Planned task, and Start it (Planned → Started)",
+        "priority": "P0",
+        "platforms": [
+          "chrome"
+        ],
+        "preconditions": [],
+        "steps": [
+          {
+            "id": "s1",
+            "action": "openUrl",
+            "targetDescription": "Navigate to Salesforce PSA Home",
+            "value": "https://ukgsf--stest.sandbox.lightning.force.com/lightning/page/home"
+          },
+          {
+            "id": "s2",
+            "action": "waitForVisible",
+            "targetDescription": "Global header visible (Home loaded)",
+            "locatorHint": "div.slds-global-header",
+            "value": "15000"
+          },
+          {
+            "id": "s3",
+            "action": "assertVisible",
+            "targetDescription": "Global search input is visible on Home",
+            "locatorHint": "input[title='Search Salesforce']"
+          },
+          {
+            "id": "s4",
+            "action": "fill",
+            "targetDescription": "Enter exact Project name in global search",
+            "locatorHint": "input[title='Search Salesforce']",
+            "value": "360 HEALTH AND COMMU - Q-383470 - Ready Fixed Fee Implementation"
+          },
+          {
+            "id": "s5",
+            "action": "waitForVisible",
+            "targetDescription": "Search results dropdown/listbox becomes visible",
+            "locatorHint": "div[role='listbox']",
+            "value": "10000"
+          },
+          {
+            "id": "s6",
+            "action": "assertContainsText",
+            "targetDescription": "Expected project appears in search results",
+            "locatorHint": "div[role='listbox']",
+            "assertion": "360 HEALTH AND COMMU - Q-383470 - Ready Fixed Fee Implementation"
+          },
+          {
+            "id": "s7",
+            "action": "tap",
+            "targetDescription": "Open Project from search results",
+            "locatorHint": "div[role='listbox'] a[role='option'], a[title='360 HEALTH AND COMMU - Q-383470 - Ready Fixed Fee Implementation']"
+          },
+          {
+            "id": "s8",
+            "action": "waitForVisible",
+            "targetDescription": "Project Detail header is visible",
+            "locatorHint": "records-page-header h1, h1[title]",
+            "value": "15000"
+          },
+          {
+            "id": "s9",
+            "action": "assertContainsText",
+            "targetDescription": "Project Detail header shows selected project name",
+            "locatorHint": "records-page-header h1, h1[title]",
+            "assertion": "360 HEALTH AND COMMU - Q-383470 - Ready Fixed Fee Implementation"
+          },
+          {
+            "id": "s10",
+            "action": "tap",
+            "targetDescription": "Open Related tab on Project Detail",
+            "locatorHint": "a[role='tab']:has-text('Related')"
+          },
+          {
+            "id": "s11",
+            "action": "scrollIntoView",
+            "targetDescription": "Scroll to Project Tasks related list card",
+            "locatorHint": "article:has(h2:has-text('Project Tasks'))"
+          },
+          {
+            "id": "s12",
+            "action": "tap",
+            "targetDescription": "Click View All on Project Tasks related list",
+            "locatorHint": "article:has(h2:has-text('Project Tasks')) a:has-text('View All')"
+          },
+          {
+            "id": "s13",
+            "action": "waitForVisible",
+            "targetDescription": "Project Tasks list view is displayed",
+            "locatorHint": "h1:has-text('Project Tasks'), .forceListViewManagerHeader",
+            "value": "15000"
+          },
+          {
+            "id": "s14",
+            "action": "assertVisible",
+            "targetDescription": "Tasks table/list is visible",
+            "locatorHint": "table, lightning-datatable"
+          },
+          {
+            "id": "s15",
+            "action": "assertVisible",
+            "targetDescription": "At least one task shows status Planned",
+            "locatorHint": "table tr td:has-text('Planned'), lightning-datatable span:has-text('Planned')"
+          },
+          {
+            "id": "s16",
+            "action": "tap",
+            "targetDescription": "Open a task with status Planned",
+            "locatorHint": "table tr:has(td:has-text('Planned')) a[role='link'], lightning-datatable tr:has(span:has-text('Planned')) a"
+          },
+          {
+            "id": "s17",
+            "action": "waitForVisible",
+            "targetDescription": "Project Task Detail page header is visible",
+            "locatorHint": "records-page-header h1, h1[title]",
+            "value": "15000"
+          },
+          {
+            "id": "s18",
+            "action": "assertContainsText",
+            "targetDescription": "Project Task Status shows Planned before starting",
+            "locatorHint": "records-record-layout-item:has-text('Status'), .record-layout:has(label:has-text('Status'))",
+            "assertion": "Planned"
+          },
+          {
+            "id": "s19",
+            "action": "assertVisible",
+            "targetDescription": "Start button is visible on Planned task",
+            "locatorHint": "button:has-text('Start')"
+          },
+          {
+            "id": "s20",
+            "action": "tap",
+            "targetDescription": "Click Start to change status to Started",
+            "locatorHint": "button:has-text('Start')"
+          },
+          {
+            "id": "s21",
+            "action": "waitForVisible",
+            "targetDescription": "Updated status value displays on Task Detail",
+            "locatorHint": "records-record-layout-item:has-text('Status') lightning-formatted-text:has-text('Started'), .record-layout:has(label:has-text('Status')) :text('Started')",
+            "value": "15000"
+          },
+          {
+            "id": "s22",
+            "action": "assertContainsText",
+            "targetDescription": "Verify status changed to Started",
+            "locatorHint": "records-record-layout-item:has-text('Status'), .record-layout:has(label:has-text('Status'))",
+            "assertion": "Started"
+          }
+        ],
+        "tags": [
+          "@functional",
+          "@regression"
+        ]
+      },
+      {
+        "id": "search-project-case-insensitive",
+        "title": "Global Search: Case-insensitive search returns the target project",
+        "priority": "P1",
+        "platforms": [
+          "chrome"
+        ],
+        "preconditions": [],
+        "steps": [
+          {
+            "id": "s1",
+            "action": "openUrl",
+            "targetDescription": "Navigate to Salesforce PSA Home",
+            "value": "https://ukgsf--stest.sandbox.lightning.force.com/lightning/page/home"
+          },
+          {
+            "id": "s2",
+            "action": "waitForVisible",
+            "targetDescription": "Global header visible (Home loaded)",
+            "locatorHint": "div.slds-global-header",
+            "value": "15000"
+          },
+          {
+            "id": "s3",
+            "action": "assertVisible",
+            "targetDescription": "Global search input is visible on Home",
+            "locatorHint": "input[title='Search Salesforce']"
+          },
+          {
+            "id": "s4",
+            "action": "fill",
+            "targetDescription": "Enter project name in lowercase to test case-insensitivity",
+            "locatorHint": "input[title='Search Salesforce']",
+            "value": "360 health and commu - q-383470 - ready fixed fee implementation"
+          },
+          {
+            "id": "s5",
+            "action": "waitForVisible",
+            "targetDescription": "Search results dropdown/listbox becomes visible",
+            "locatorHint": "div[role='listbox']",
+            "value": "10000"
+          },
+          {
+            "id": "s6",
+            "action": "assertContainsText",
+            "targetDescription": "Results include the correctly-cased project name (case-insensitive match)",
+            "locatorHint": "div[role='listbox']",
+            "assertion": "360 HEALTH AND COMMU - Q-383470 - Ready Fixed Fee Implementation"
+          }
+        ],
+        "tags": [
+          "@functional",
+          "@regression"
+        ]
+      }
+    ]
+  }
+}
