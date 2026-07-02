@@ -12,6 +12,10 @@ test.describe('Salesforce PSA - Start Planned Project Task - Functional', () => 
       await homePage.expectSearchVisible();
     });
 
+    await test.step('Open — Expand global search', async () => {
+      await homePage.clickSearch();
+    });
+
     await test.step('Assert visible — Global search input is visible on Home', async () => {
       await homePage.expectSearchInputVisible();
     });
@@ -100,6 +104,10 @@ test.describe('Salesforce PSA - Start Planned Project Task - Functional', () => 
 
     await test.step('Assert visible — Global header visible (Home loaded)', async () => {
       await homePage.expectSearchVisible();
+    });
+
+    await test.step('Open — Expand global search', async () => {
+      await homePage.clickSearch();
     });
 
     await test.step('Assert visible — Global search input is visible on Home', async () => {
