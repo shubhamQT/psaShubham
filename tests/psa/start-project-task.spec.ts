@@ -11,12 +11,16 @@ test('Open a Project Task with Status=Planned and verify fields and Start button
     await page.goto(env.baseURL);
   });
 
-  await test.step('Assert visible — Global Search input is visible', async () => {
-    await homePage.expectSearchInputVisible();
+  await test.step('Assert visible — Global Search is visible', async () => {
+    await homePage.expectSearchVisible();
   });
 
   await test.step('Click — Focus the Global Search input', async () => {
     await homePage.clickSearch();
+  });
+
+  await test.step('Assert visible — Global Search input is visible', async () => {
+    await homePage.expectSearchInputVisible();
   });
 
   await test.step('Fill — Enter project name into Global Search', async () => {
