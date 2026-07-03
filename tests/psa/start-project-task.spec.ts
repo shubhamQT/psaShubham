@@ -28,11 +28,13 @@ test('Open a Project Task with Status=Planned and verify fields and Start button
   });
 
   await test.step('Assert visible — Search results show the project', async () => {
-    await homePage.expectSuggestionTooltipLabel492Visible();
+    await homePage.expectShowMoreResultsForVisible();
   });
 
   await test.step('Click — Open the project from search results', async () => {
-    await homePage.clickSuggestionTooltipLabel492();
+    await homePage.clickShowMoreResultsFor();
+    await homePage.expectPerrySRestaurantsQ453446LinkVisible();
+    await homePage.clickPerrySRestaurantsQ453446Link();
   });
 
   await test.step('Assert visible — Project record header is visible', async () => {
