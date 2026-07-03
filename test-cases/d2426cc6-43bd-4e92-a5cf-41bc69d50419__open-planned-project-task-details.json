@@ -1,0 +1,152 @@
+{
+  "id": "open-planned-project-task-details",
+  "testPlanId": "d2426cc6-43bd-4e92-a5cf-41bc69d50419",
+  "requirementId": "1846f944-2a24-4b5f-a0fc-f82a3966e8e6",
+  "suiteName": "Salesforce PSA - Start Planned Project Task (Functional)",
+  "case": {
+    "id": "open-planned-project-task-details",
+    "title": "Open a Project Task with Status=Planned and verify fields and Start button",
+    "priority": "P0",
+    "platforms": [
+      "chrome"
+    ],
+    "preconditions": [
+      "Test data: Project 'QA Planned Task Project' exists with at least one Project Task with Status = Planned.",
+      "User has permissions to view and edit the Project and its Project Tasks."
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "action": "openUrl",
+        "targetDescription": "Open Salesforce Home",
+        "value": "https://ukgsf--stest.sandbox.lightning.force.com/lightning/page/home"
+      },
+      {
+        "id": "s2",
+        "action": "waitForVisible",
+        "targetDescription": "Global Search input is visible",
+        "locatorHint": "input[title='Search Salesforce']"
+      },
+      {
+        "id": "s3",
+        "action": "tap",
+        "targetDescription": "Focus the Global Search input",
+        "locatorHint": "input[title='Search Salesforce']"
+      },
+      {
+        "id": "s4",
+        "action": "fill",
+        "targetDescription": "Enter project name into Global Search",
+        "locatorHint": "input[title='Search Salesforce']",
+        "value": "QA Planned Task Project"
+      },
+      {
+        "id": "s5",
+        "action": "waitForVisible",
+        "targetDescription": "Search results show the project",
+        "locatorHint": "a:has-text('QA Planned Task Project')"
+      },
+      {
+        "id": "s6",
+        "action": "tap",
+        "targetDescription": "Open the project from search results",
+        "locatorHint": "a:has-text('QA Planned Task Project')"
+      },
+      {
+        "id": "s7",
+        "action": "waitForVisible",
+        "targetDescription": "Project record header is visible",
+        "locatorHint": "records-record-layout h1:has-text('QA Planned Task Project')"
+      },
+      {
+        "id": "s8",
+        "action": "tap",
+        "targetDescription": "Open Related tab on Project record",
+        "locatorHint": "a[role='tab'][data-label='Related'], a[role='tab']:has-text('Related')"
+      },
+      {
+        "id": "s9",
+        "action": "scrollIntoView",
+        "targetDescription": "Scroll to Project Tasks related list",
+        "locatorHint": "article[aria-label='Project Tasks']"
+      },
+      {
+        "id": "s10",
+        "action": "tap",
+        "targetDescription": "Click View All in Project Tasks related list",
+        "locatorHint": "article[aria-label='Project Tasks'] a[title='View All']"
+      },
+      {
+        "id": "s11",
+        "action": "waitForVisible",
+        "targetDescription": "Related Lists workspace is visible",
+        "locatorHint": "nav[aria-label='Related Lists']"
+      },
+      {
+        "id": "s12",
+        "action": "tap",
+        "targetDescription": "Open the Project Tasks related list",
+        "locatorHint": "a:has-text('Project Tasks')"
+      },
+      {
+        "id": "s13",
+        "action": "waitForVisible",
+        "targetDescription": "Project Tasks list/table is visible",
+        "locatorHint": "table[role='grid']"
+      },
+      {
+        "id": "s14",
+        "action": "tap",
+        "targetDescription": "Open the first task with Status = Planned",
+        "locatorHint": "tbody tr:has(td:has-text('Planned')) a[role='link']"
+      },
+      {
+        "id": "s15",
+        "action": "waitForVisible",
+        "targetDescription": "Project Task record page is visible",
+        "locatorHint": "records-record-layout h1"
+      },
+      {
+        "id": "s16",
+        "action": "assertVisible",
+        "targetDescription": "Status field is visible",
+        "locatorHint": "records-record-layout .slds-form__item:has(label:has-text('Status'))"
+      },
+      {
+        "id": "s17",
+        "action": "assertVisible",
+        "targetDescription": "Started checkbox field is visible",
+        "locatorHint": "input[type='checkbox'][name='Started'], lightning-input:has-text('Started')"
+      },
+      {
+        "id": "s18",
+        "action": "assertVisible",
+        "targetDescription": "Actual Start Date field is visible",
+        "locatorHint": ".slds-form__item:has(label:has-text('Actual Start Date'))"
+      },
+      {
+        "id": "s19",
+        "action": "assertText",
+        "targetDescription": "Status field value is Planned",
+        "locatorHint": ".slds-form__item:has(label:has-text('Status')) .slds-form-element__control",
+        "assertion": "Planned"
+      },
+      {
+        "id": "s20",
+        "action": "assertVisible",
+        "targetDescription": "Start button is visible",
+        "locatorHint": "button:has-text('Start'), button[name='Start']"
+      },
+      {
+        "id": "s21",
+        "action": "assertEnabled",
+        "targetDescription": "Start button is enabled",
+        "locatorHint": "button:has-text('Start'), button[name='Start']"
+      }
+    ],
+    "tags": [
+      "@functional",
+      "@regression"
+    ]
+  }
+}

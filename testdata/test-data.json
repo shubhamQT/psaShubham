@@ -1,1 +1,8 @@
-{}
+{
+  "openAProjectTaskWithStatusPlannedAndVerifyFieldsAndStartButton": {
+    "enterProjectNameIntoGlobalSearch": "QA Planned Task Project"
+  },
+  "startAPlannedProjectTaskAndVerifyUpdatedFields": {
+    "enterProjectNameIntoGlobalSearch": "QA Planned Task Project"
+  }
+}

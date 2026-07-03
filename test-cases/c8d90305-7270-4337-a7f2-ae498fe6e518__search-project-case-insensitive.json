@@ -1,0 +1,61 @@
+{
+  "id": "search-project-case-insensitive",
+  "testPlanId": "c8d90305-7270-4337-a7f2-ae498fe6e518",
+  "requirementId": "273818f7-95f1-42a3-8a51-065127bfa87a",
+  "suiteName": "Salesforce PSA - Start Planned Project Task - Functional",
+  "case": {
+    "id": "search-project-case-insensitive",
+    "title": "Global Search: Case-insensitive search returns the target project",
+    "priority": "P1",
+    "platforms": [
+      "chrome"
+    ],
+    "preconditions": [],
+    "steps": [
+      {
+        "id": "s1",
+        "action": "openUrl",
+        "targetDescription": "Navigate to Salesforce PSA Home",
+        "value": "https://ukgsf--stest.sandbox.lightning.force.com/lightning/page/home"
+      },
+      {
+        "id": "s2",
+        "action": "waitForVisible",
+        "targetDescription": "Global header visible (Home loaded)",
+        "locatorHint": "div.slds-global-header",
+        "value": "15000"
+      },
+      {
+        "id": "s3",
+        "action": "assertVisible",
+        "targetDescription": "Global search input is visible on Home",
+        "locatorHint": "input[title='Search Salesforce']"
+      },
+      {
+        "id": "s4",
+        "action": "fill",
+        "targetDescription": "Enter project name in lowercase to test case-insensitivity",
+        "locatorHint": "input[title='Search Salesforce']",
+        "value": "360 health and commu - q-383470 - ready fixed fee implementation"
+      },
+      {
+        "id": "s5",
+        "action": "waitForVisible",
+        "targetDescription": "Search results dropdown/listbox becomes visible",
+        "locatorHint": "div[role='listbox']",
+        "value": "10000"
+      },
+      {
+        "id": "s6",
+        "action": "assertContainsText",
+        "targetDescription": "Results include the correctly-cased project name (case-insensitive match)",
+        "locatorHint": "div[role='listbox']",
+        "assertion": "360 HEALTH AND COMMU - Q-383470 - Ready Fixed Fee Implementation"
+      }
+    ],
+    "tags": [
+      "@functional",
+      "@regression"
+    ]
+  }
+}
