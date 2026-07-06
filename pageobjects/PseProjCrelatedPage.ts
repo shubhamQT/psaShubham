@@ -87,6 +87,7 @@ export class PseProjCrelatedPage {
     sortByKeyTask: { strategy: 'role' as const, value: 'Sort by: Key Task Type', role: 'button', shadowHost: 'lightning-primitive-header-factory', actionKind: 'link' as const },
     showKeyTaskType: { strategy: 'role' as const, value: 'Show Key Task Type column actions', role: 'button', shadowHost: '#primitive-header-action-button-menu-id-1840', actionKind: 'button' as const },
     keyTaskTypeColumn: { strategy: 'role' as const, value: 'Key Task Type column width', role: 'textbox', shadowHost: 'lightning-primitive-resize-handler', actionKind: 'generic' as const },
+    openTheFirstTaskWithStatusPlanned: { strategy: 'css' as const, value: 'tbody tr:has(td:has-text(\'Planned\')) a[role=\'link\']', actionKind: 'button' as const },
   } as const;
 
   readonly sldsTable1: WebTable; // columns: ["Item Number", "", "SortDue DateSorted AscendingShow Due Date Column Actions", "SortSubjectShow Subject Column Actions", "SortNameShow Name Column Actions", "SortRelated ToShow Related To Column Actions", "SortUKG Activity TypeShow UKG Activity Type Column Actions", "SortType DetailShow Type Detail Column Actions", "SortPriorityShow Priority Column Actions", "SortStatusShow Status Column Actions", "SortLast Modified By AliasShow Last Modified By Alias Column Actions", "Action"]
@@ -2857,6 +2858,67 @@ export class PseProjCrelatedPage {
 
   async scrollKeyTaskTypeColumnIntoView(): Promise<void> {
     await scrollIntoViewWhenVisible(webLocator(this.page, PseProjCrelatedPage.L.keyTaskTypeColumn));
+  }
+
+
+  async clickOpenTheFirstTaskWithStatusPlanned(): Promise<void> {
+    await clickWhenVisible(webLocator(this.page, PseProjCrelatedPage.L.openTheFirstTaskWithStatusPlanned));
+  }
+
+  async doubleClickOpenTheFirstTaskWithStatusPlanned(): Promise<void> {
+    await doubleClickWhenVisible(webLocator(this.page, PseProjCrelatedPage.L.openTheFirstTaskWithStatusPlanned));
+  }
+
+  async longPressOpenTheFirstTaskWithStatusPlanned(): Promise<void> {
+    await longPressWhenVisible(webLocator(this.page, PseProjCrelatedPage.L.openTheFirstTaskWithStatusPlanned));
+  }
+
+  async expectOpenTheFirstTaskWithStatusPlannedVisible(timeoutMs = 30_000): Promise<void> {
+    await expectVisible(webLocator(this.page, PseProjCrelatedPage.L.openTheFirstTaskWithStatusPlanned), timeoutMs);
+  }
+
+  async expectOpenTheFirstTaskWithStatusPlannedHidden(timeoutMs = 30_000): Promise<void> {
+    await expectHidden(webLocator(this.page, PseProjCrelatedPage.L.openTheFirstTaskWithStatusPlanned), timeoutMs);
+  }
+
+  async expectOpenTheFirstTaskWithStatusPlannedText(expected: string, timeoutMs = 30_000): Promise<void> {
+    await expectText(webLocator(this.page, PseProjCrelatedPage.L.openTheFirstTaskWithStatusPlanned), expected, timeoutMs);
+  }
+
+  async expectOpenTheFirstTaskWithStatusPlannedContainsText(substring: string, timeoutMs = 30_000): Promise<void> {
+    await expectContainsText(webLocator(this.page, PseProjCrelatedPage.L.openTheFirstTaskWithStatusPlanned), substring, timeoutMs);
+  }
+
+  async expectOpenTheFirstTaskWithStatusPlannedValue(value: string, timeoutMs = 30_000): Promise<void> {
+    await expectValue(webLocator(this.page, PseProjCrelatedPage.L.openTheFirstTaskWithStatusPlanned), value, timeoutMs);
+  }
+
+  async expectOpenTheFirstTaskWithStatusPlannedEnabled(timeoutMs = 30_000): Promise<void> {
+    await expectEnabled(webLocator(this.page, PseProjCrelatedPage.L.openTheFirstTaskWithStatusPlanned), timeoutMs);
+  }
+
+  async expectOpenTheFirstTaskWithStatusPlannedDisabled(timeoutMs = 30_000): Promise<void> {
+    await expectDisabled(webLocator(this.page, PseProjCrelatedPage.L.openTheFirstTaskWithStatusPlanned), timeoutMs);
+  }
+
+  async expectOpenTheFirstTaskWithStatusPlannedChecked(timeoutMs = 30_000): Promise<void> {
+    await expectChecked(webLocator(this.page, PseProjCrelatedPage.L.openTheFirstTaskWithStatusPlanned), timeoutMs);
+  }
+
+  async expectOpenTheFirstTaskWithStatusPlannedUnchecked(timeoutMs = 30_000): Promise<void> {
+    await expectUnchecked(webLocator(this.page, PseProjCrelatedPage.L.openTheFirstTaskWithStatusPlanned), timeoutMs);
+  }
+
+  async expectOpenTheFirstTaskWithStatusPlannedFocused(timeoutMs = 30_000): Promise<void> {
+    await expectFocused(webLocator(this.page, PseProjCrelatedPage.L.openTheFirstTaskWithStatusPlanned), timeoutMs);
+  }
+
+  async expectOpenTheFirstTaskWithStatusPlannedCount(count: number, timeoutMs = 30_000): Promise<void> {
+    await expectCount(webLocator(this.page, PseProjCrelatedPage.L.openTheFirstTaskWithStatusPlanned), count, timeoutMs);
+  }
+
+  async scrollOpenTheFirstTaskWithStatusPlannedIntoView(): Promise<void> {
+    await scrollIntoViewWhenVisible(webLocator(this.page, PseProjCrelatedPage.L.openTheFirstTaskWithStatusPlanned));
   }
 
 }

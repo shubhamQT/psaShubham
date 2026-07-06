@@ -175,80 +175,89 @@
             "id": "s2",
             "action": "waitForVisible",
             "targetDescription": "Global Search input is visible",
-            "locatorHint": "input[title='Search Salesforce']"
+            "locatorHint": "input[title='Search Salesforce']",
+            "screenName": "Home",
+            "pageObjectMethod": "expectSearchVisible"
           },
           {
             "id": "s3",
             "action": "tap",
             "targetDescription": "Focus the Global Search input",
-            "locatorHint": "input[title='Search Salesforce']"
+            "locatorHint": "input[title='Search Salesforce']",
+            "screenName": "Home",
+            "pageObjectMethod": "clickSearch"
           },
           {
             "id": "s4",
             "action": "fill",
             "targetDescription": "Enter project name into Global Search",
             "locatorHint": "input[title='Search Salesforce']",
-            "value": "QA Planned Task Project"
+            "screenName": "Home",
+            "pageObjectMethod": "fillSearchInput",
+            "value": "Perry's Restaurants, - Q-453446 - Ready Fixed Fee Implementation"
           },
           {
             "id": "s5",
             "action": "waitForVisible",
             "targetDescription": "Search results show the project",
-            "locatorHint": "a:has-text('QA Planned Task Project')"
+            "locatorHint": "a:has-text('QA Planned Task Project')",
+            "screenName": "Home",
+            "pageObjectMethod": "expectPerrySRestaurantsQ453446LinkVisible"
           },
           {
             "id": "s6",
             "action": "tap",
             "targetDescription": "Open the project from search results",
-            "locatorHint": "a:has-text('QA Planned Task Project')"
+            "locatorHint": "a:has-text('QA Planned Task Project')",
+            "screenName": "Home",
+            "pageObjectMethod": "clickPerrySRestaurantsQ453446Link"
           },
           {
             "id": "s7",
             "action": "waitForVisible",
             "targetDescription": "Project record header is visible",
-            "locatorHint": "records-record-layout h1:has-text('QA Planned Task Project')"
+            "locatorHint": "records-record-layout h1:has-text('QA Planned Task Project')",
+            "screenName": "PseProjC",
+            "pageObjectMethod": "expectProjectPerrySRestaurantsVisible"
           },
           {
             "id": "s8",
             "action": "tap",
             "targetDescription": "Open Related tab on Project record",
-            "locatorHint": "a[role='tab'][data-label='Related'], a[role='tab']:has-text('Related')"
-          },
-          {
-            "id": "s9",
-            "action": "scrollIntoView",
-            "targetDescription": "Scroll to Project Tasks related list",
-            "locatorHint": "article[aria-label='Project Tasks']"
-          },
-          {
-            "id": "s10",
-            "action": "tap",
-            "targetDescription": "Click View All in Project Tasks related list",
-            "locatorHint": "article[aria-label='Project Tasks'] a[title='View All']"
+            "locatorHint": "a[role='tab'][data-label='Related'], a[role='tab']:has-text('Related')",
+            "screenName": "PseProjC",
+            "customCode": "await pseProjCPage.expectShowAll35Visible();\nawait pseProjCPage.clickShowAll35();"
           },
           {
             "id": "s11",
             "action": "waitForVisible",
             "targetDescription": "Related Lists workspace is visible",
-            "locatorHint": "nav[aria-label='Related Lists']"
+            "locatorHint": "nav[aria-label='Related Lists']",
+            "screenName": "PseProjC",
+            "customCode": "await pseProjCPage.expectProjectTasks10Visible();"
           },
           {
             "id": "s12",
             "action": "tap",
             "targetDescription": "Open the Project Tasks related list",
-            "locatorHint": "a:has-text('Project Tasks')"
+            "locatorHint": "a:has-text('Project Tasks')",
+            "screenName": "PseProjC",
+            "customCode": "await pseProjCPage.clickProjectTasks10();"
           },
           {
             "id": "s13",
             "action": "waitForVisible",
             "targetDescription": "Project Tasks list/table is visible",
-            "locatorHint": "table[role='grid']"
+            "locatorHint": "table[role='grid']",
+            "screenName": "PseProjCRelated",
+            "pageObjectMethod": "expectProjectTasksVisible"
           },
           {
             "id": "s14",
             "action": "tap",
             "targetDescription": "Open the first task with Status = Planned",
-            "locatorHint": "tbody tr:has(td:has-text('Planned')) a[role='link']"
+            "locatorHint": "tbody tr:has(td:has-text('Planned')) a[role='link']",
+            "screenName": "PseProjCRelated"
           },
           {
             "id": "s15",

@@ -98,3 +98,60 @@ test('Open a Project Task with Status=Planned and verify fields and Start button
     await pseProjectTaskCPage.expectStartEnabled();
   });
 });
+
+test('Start a Planned Project Task and verify updated fields', { tag: ["@functional","@regression","@P0","@start-planned-project-task"] }, async ({ page, homePage, pseProjCPage, pseProjCrelatedPage, pseProjectTaskCPage }) => {
+  await test.step('Navigate to URL — Open Salesforce Home', async () => {
+    await page.goto('https://ukgsf--stest.sandbox.lightning.force.com/lightning/page/home');
+  });
+  await test.step('Wait until visible — Global Search input is visible — (input[title=\'Search Salesforce\'])', async () => {
+    await homePage.expectSearchVisible();
+  });
+  await test.step('Click — Focus the Global Search input — (input[title=\'Search Salesforce\'])', async () => {
+    await homePage.clickSearch();
+  });
+  await test.step('Fill — Enter project name into Global Search — (input[title=\'Search Salesforce\'])', async () => {
+    await homePage.fillSearchInput('Perry\'s Restaurants, - Q-453446 - Ready Fixed Fee Implementation');
+  });
+  await test.step('Wait until visible — Search results show the project — (a:has-text(\'QA Planned Task Project\'))', async () => {
+    await homePage.expectPerrySRestaurantsQ453446LinkVisible();
+  });
+  await test.step('Click — Open the project from search results — (a:has-text(\'QA Planned Task Project\'))', async () => {
+    await homePage.clickPerrySRestaurantsQ453446Link();
+  });
+  await test.step('Wait until visible — Project record header is visible — (records-record-layout h1:has-text(\'QA Planned Task Project\'))', async () => {
+    await pseProjCPage.expectProjectPerrySRestaurantsVisible();
+  });
+  await test.step('Assert visible — Open Related tab on Project record (a[role=\'tab\'][data-label=\'Related\'], a[role=\'tab\']:has-text(\'Relate', async () => {
+    await pseProjCPage.expectShowAll35Visible();
+  });
+  await test.step('Click — Open Related tab on Project record (a[role=\'tab\'][data-label=\'Related\'], a[role=\'tab\']:has-text(\'Related\'))', async () => {
+    await pseProjCPage.clickShowAll35();
+  });
+  await test.step('Wait until visible — Related Lists workspace is visible — (nav[aria-label=\'Related Lists\'])', async () => {
+    await pseProjCPage.expectProjectTasks10Visible();
+  });
+  await test.step('Click — Open the Project Tasks related list — (a:has-text(\'Project Tasks\'))', async () => {
+    await pseProjCPage.clickProjectTasks10();
+  });
+  await test.step('Wait until visible — Project Tasks list/table is visible — (table[role=\'grid\'])', async () => {
+    await pseProjCrelatedPage.expectProjectTasksVisible();
+  });
+  await test.step('Wait until visible — Project Task record page is visible — (records-record-layout h1)', async () => {
+    await pseProjectTaskCPage.expectProjectVisible();
+  });
+  await test.step('Click — Click Start button — (button:has-text(\'Start\'), button[name=\'Start\'])', async () => {
+    await pseProjectTaskCPage.clickStart();
+  });
+  await test.step('Wait (timeout) — Wait for update to complete', async () => {
+    await page.waitForTimeout(1500);
+  });
+  await test.step('Assert text (exact) — Status field value is Started — (.slds-form__item:has(label:has-text(\'Status\')) .slds-form-element', async () => {
+    await pseProjectTaskCPage.expectStartText('Started');
+  });
+  await test.step('Assert checked — Started checkbox is checked — (input[type=\'checkbox\'][name=\'Started\'], lightning-input:has-text(\'Starte', async () => {
+    await pseProjectTaskCPage.expectStartChecked();
+  });
+  await test.step('Assert contains text — Actual Start Date is populated with today\'s date — (.slds-form__item:has(label:has-text(\'Actual S', async () => {
+    await pseProjectTaskCPage.expectStartContainsText('{{TODAY}}');
+  });
+});

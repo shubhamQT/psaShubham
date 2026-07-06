@@ -104,6 +104,7 @@ export class PseProjCPage {
     projectServicesDeliverableItemsLink: { strategy: 'role' as const, value: 'Project Services Deliverable Items (0)', role: 'link', shadowHost: 'records-hoverable-link', actionKind: 'link' as const },
     managedVersions0: { strategy: 'role' as const, value: 'Managed Versions (0)', role: 'link', shadowHost: 'records-hoverable-link', actionKind: 'link' as const },
     showLess: { strategy: 'role' as const, value: 'Show Less', role: 'link', shadowHost: 'lst-related-list-quick-links-grid', actionKind: 'link' as const },
+    openRelatedTabOnProjectRecord: { strategy: 'css' as const, value: 'a[role=\'tab\'][data-label=\'Related\'], a[role=\'tab\']:has-text(\'Related\')', actionKind: 'button' as const },
   } as const;
 
   constructor(private readonly page: Page) {}
@@ -3847,6 +3848,67 @@ export class PseProjCPage {
 
   async scrollShowLessIntoView(): Promise<void> {
     await scrollIntoViewWhenVisible(webLocator(this.page, PseProjCPage.L.showLess));
+  }
+
+
+  async clickOpenRelatedTabOnProjectRecord(): Promise<void> {
+    await clickWhenVisible(webLocator(this.page, PseProjCPage.L.openRelatedTabOnProjectRecord));
+  }
+
+  async doubleClickOpenRelatedTabOnProjectRecord(): Promise<void> {
+    await doubleClickWhenVisible(webLocator(this.page, PseProjCPage.L.openRelatedTabOnProjectRecord));
+  }
+
+  async longPressOpenRelatedTabOnProjectRecord(): Promise<void> {
+    await longPressWhenVisible(webLocator(this.page, PseProjCPage.L.openRelatedTabOnProjectRecord));
+  }
+
+  async expectOpenRelatedTabOnProjectRecordVisible(timeoutMs = 30_000): Promise<void> {
+    await expectVisible(webLocator(this.page, PseProjCPage.L.openRelatedTabOnProjectRecord), timeoutMs);
+  }
+
+  async expectOpenRelatedTabOnProjectRecordHidden(timeoutMs = 30_000): Promise<void> {
+    await expectHidden(webLocator(this.page, PseProjCPage.L.openRelatedTabOnProjectRecord), timeoutMs);
+  }
+
+  async expectOpenRelatedTabOnProjectRecordText(expected: string, timeoutMs = 30_000): Promise<void> {
+    await expectText(webLocator(this.page, PseProjCPage.L.openRelatedTabOnProjectRecord), expected, timeoutMs);
+  }
+
+  async expectOpenRelatedTabOnProjectRecordContainsText(substring: string, timeoutMs = 30_000): Promise<void> {
+    await expectContainsText(webLocator(this.page, PseProjCPage.L.openRelatedTabOnProjectRecord), substring, timeoutMs);
+  }
+
+  async expectOpenRelatedTabOnProjectRecordValue(value: string, timeoutMs = 30_000): Promise<void> {
+    await expectValue(webLocator(this.page, PseProjCPage.L.openRelatedTabOnProjectRecord), value, timeoutMs);
+  }
+
+  async expectOpenRelatedTabOnProjectRecordEnabled(timeoutMs = 30_000): Promise<void> {
+    await expectEnabled(webLocator(this.page, PseProjCPage.L.openRelatedTabOnProjectRecord), timeoutMs);
+  }
+
+  async expectOpenRelatedTabOnProjectRecordDisabled(timeoutMs = 30_000): Promise<void> {
+    await expectDisabled(webLocator(this.page, PseProjCPage.L.openRelatedTabOnProjectRecord), timeoutMs);
+  }
+
+  async expectOpenRelatedTabOnProjectRecordChecked(timeoutMs = 30_000): Promise<void> {
+    await expectChecked(webLocator(this.page, PseProjCPage.L.openRelatedTabOnProjectRecord), timeoutMs);
+  }
+
+  async expectOpenRelatedTabOnProjectRecordUnchecked(timeoutMs = 30_000): Promise<void> {
+    await expectUnchecked(webLocator(this.page, PseProjCPage.L.openRelatedTabOnProjectRecord), timeoutMs);
+  }
+
+  async expectOpenRelatedTabOnProjectRecordFocused(timeoutMs = 30_000): Promise<void> {
+    await expectFocused(webLocator(this.page, PseProjCPage.L.openRelatedTabOnProjectRecord), timeoutMs);
+  }
+
+  async expectOpenRelatedTabOnProjectRecordCount(count: number, timeoutMs = 30_000): Promise<void> {
+    await expectCount(webLocator(this.page, PseProjCPage.L.openRelatedTabOnProjectRecord), count, timeoutMs);
+  }
+
+  async scrollOpenRelatedTabOnProjectRecordIntoView(): Promise<void> {
+    await scrollIntoViewWhenVisible(webLocator(this.page, PseProjCPage.L.openRelatedTabOnProjectRecord));
   }
 
 }
